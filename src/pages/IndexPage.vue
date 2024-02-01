@@ -1,42 +1,33 @@
 <template>
   <q-page class="row items-center justify-evenly">
-    <example-component
-      title="Example component"
-      active
-      :todos="todos"
-      :meta="meta"
-    ></example-component>
+    <div class="text-black" v-for="product in products" :key="product.id">
+      <q-img
+        :src="product.image"
+        :ratio="16 / 9"
+        spinner-color="primary"
+        spinner-size="82px"
+        fit="contain"
+        width="400px"
+        height="400px"
+      />
+    </div>
   </q-page>
 </template>
 
 <script setup lang="ts">
-import { Todo, Meta } from 'components/models';
-import ExampleComponent from 'components/ExampleComponent.vue';
+import { Product } from 'components/models';
 import { ref } from 'vue';
+import { productStore } from 'src/stores/products';
+import { onMounted } from 'vue';
 
-const todos = ref<Todo[]>([
-  {
-    id: 1,
-    content: 'ct1'
-  },
-  {
-    id: 2,
-    content: 'ct2'
-  },
-  {
-    id: 3,
-    content: 'ct3'
-  },
-  {
-    id: 4,
-    content: 'ct4'
-  },
-  {
-    id: 5,
-    content: 'ct5'
-  }
-]);
-const meta = ref<Meta>({
-  totalCount: 1200
+const store = productStore();
+const products = ref<Product[] | undefined>([]);
+const categories = ref<string[] | undefined>([]);
+
+onMounted(async () => {
+  products.value = await store.allProducts();
+  categories.value = await store.allCategories();
 });
+
+productStore;
 </script>

@@ -1,8 +1,20 @@
-export interface Todo {
-  id: number;
-  content: string;
+export interface EssentialLinkProps {
+  title: string;
+  link?: string;
+  icon?: string;
 }
 
-export interface Meta {
-  totalCount: number;
+export interface Product {
+  id: number;
+  title: string;
+  price: string;
+  category: string;
+  description: string;
+  image: string;
+  rating: Rating;
+}
+
+export interface Rating {
+  rate: number;
+  count: number;
 }
