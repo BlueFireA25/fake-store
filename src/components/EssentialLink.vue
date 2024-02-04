@@ -1,19 +1,16 @@
 <template>
   <div v-for="essentialLink in essentialLinks" :key="essentialLink.title">
     <q-item
-      class="text-dark"
-      clickable
+      class="text-dark link cursor-pointer"
       tag="a"
       :to="{ name: essentialLink.link }"
       exact
       exact-active-class="active-link"
     >
-      <q-item-section v-if="essentialLink.icon" avatar>
-        <q-icon :name="essentialLink.icon" />
-      </q-item-section>
-
       <q-item-section>
-        <q-item-label>{{ essentialLink.title }}</q-item-label>
+        <q-item-label>
+          {{ essentialLink.title }}
+        </q-item-label>
       </q-item-section>
     </q-item>
   </div>
@@ -32,7 +29,19 @@ defineProps({
 </script>
 
 <style scoped lang="scss">
+.link {
+  font-weight: 600;
+}
+
+.link:hover {
+  text-decoration: underline;
+  text-underline-offset: 8px;
+}
+
 .active-link {
+  cursor: pointer;
   color: #222222 !important;
+  text-decoration: underline;
+  text-underline-offset: 8px;
 }
 </style>

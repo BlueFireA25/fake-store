@@ -1,7 +1,11 @@
 export interface EssentialLinkProps {
   title: string;
   link?: string;
-  icon?: string;
+}
+
+export interface HeroCardProps {
+  title: string;
+  description?: string;
 }
 
 export interface Product {

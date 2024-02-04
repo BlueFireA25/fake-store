@@ -38,10 +38,38 @@ h6 {
   text-wrap: balance;
 }
 
+a {
+  color: $dark;
+}
+
 p {
   text-wrap: pretty;
 }
 
+/*==================== useful classes ====================*/
 .q-btn {
   border-radius: 10px;
+}
+
+.q-drawer {
+  width: 100vw !important;
+}
+
+.q-item {
+  .q-focus-helper {
+    display: none;
+  }
+}
+
+.hero__card {
+  max-width: 1200px;
+  border-radius: 10px;
+  background-color: $grey-1;
+  padding: 50px;
+}
+
+@media (max-width: $breakpoint-xs-max) {
+  .hero__card {
+    padding: 50px 20px;
+  }
 }

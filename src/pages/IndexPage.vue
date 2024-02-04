@@ -1,7 +1,7 @@
 <template>
   <q-page class="row items-center justify-evenly">
     <div class="text-black" v-for="product in products" :key="product.id">
-      <q-img
+      <!-- <q-img
         :src="product.image"
         :ratio="16 / 9"
         spinner-color="primary"
@@ -9,7 +9,7 @@
         fit="contain"
         width="400px"
         height="400px"
-      />
+      /> -->
     </div>
   </q-page>
 </template>
@@ -28,6 +28,4 @@ onMounted(async () => {
   products.value = await store.allProducts();
   categories.value = await store.allCategories();
 });
-
-productStore;
 </script>
