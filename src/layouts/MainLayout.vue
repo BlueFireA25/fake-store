@@ -35,9 +35,11 @@
 
                 <div class="column items-center">
                   <q-avatar size="72px">
-                    <img
+                    <q-img
                       src="https://cdn.quasar.dev/img/avatar4.jpg"
                       alt="User"
+                      spinner-color="dark"
+                      spinner-size="50px"
                     />
                   </q-avatar>
 
@@ -145,9 +147,11 @@
 
               <div class="column items-center">
                 <q-avatar size="72px">
-                  <img
+                  <q-img
                     src="https://cdn.quasar.dev/img/avatar4.jpg"
                     alt="User"
+                    spinner-color="dark"
+                    spinner-size="50px"
                   />
                 </q-avatar>
 
@@ -248,11 +252,11 @@ const essentialLinksHeader: EssentialLinkProps[] = [
   },
   {
     title: 'About',
-    link: 'asd',
+    link: 'About',
   },
   {
     title: 'Blog',
-    link: 'asd',
+    link: 'Blog',
   },
   {
     title: 'Contact',
@@ -271,11 +275,11 @@ const essentialLinksFooter: EssentialLinkProps[] = [
   },
   {
     title: 'About',
-    link: 'asd',
+    link: 'About',
   },
   {
     title: 'Blog',
-    link: 'asd',
+    link: 'Blog',
   },
   {
     title: 'FAQs',
@@ -287,7 +291,7 @@ const essentialLinksFooter: EssentialLinkProps[] = [
   },
   {
     title: 'Privacy Policy',
-    link: 'fdf',
+    link: 'Privacy Policy',
   },
   {
     title: 'Licenses',

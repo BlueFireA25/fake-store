@@ -2,16 +2,24 @@
   <q-page class="q-px-md">
     <HeroCard :hero-card="heroCard" />
 
-    <div class="faqs q-mx-auto q-px-md">
+    <div class="container q-mx-auto q-px-md">
       <div class="q-mb-xl">
-        <h2 class="text-h5 text-weight-bold q-mt-none q-mb-lg">General</h2>
+        <h2
+          :class="{
+            'text-weight-bold q-mt-none q-mb-lg': true,
+            'text-h5': $q.screen.gt.xs,
+            'text-h6': $q.screen.lt.sm,
+          }"
+        >
+          General
+        </h2>
 
         <q-expansion-item
           class="bg-grey-1 text-subtitle1 text-weight-bold faqs__expansion q-mb-lg"
           label="Is my personal information secure on your site?"
           expand-icon="angle-down"
         >
-          <q-card class="bg-grey-1 text-body2 text-weight-medium text-dark">
+          <q-card class="bg-grey-1 text-body2 text-weight-regular text-dark">
             <q-card-section class="q-pt-sm">
               Yes, we take your privacy seriously. Our website uses advanced
               encryption protocols to secure your personal information, and we
@@ -25,7 +33,7 @@
           label="How can I reset my password?"
           expand-icon="angle-down"
         >
-          <q-card class="bg-grey-1 text-body2 text-weight-medium text-dark">
+          <q-card class="bg-grey-1 text-body2 text-weight-regular text-dark">
             <q-card-section class="q-pt-sm">
               If you forget your password, click on the "Forgot Password" link
               on the login page. Follow the instructions in the email we send
@@ -39,7 +47,7 @@
           label="What payment methods do you accept?"
           expand-icon="angle-down"
         >
-          <q-card class="bg-grey-1 text-body2 text-weight-medium text-dark">
+          <q-card class="bg-grey-1 text-body2 text-weight-regular text-dark">
             <q-card-section class="q-pt-sm">
               We accept a variety of payment methods, including credit cards,
               debit cards, and PayPal. You can find the full list of accepted
@@ -50,14 +58,22 @@
       </div>
 
       <div class="q-mb-xl">
-        <h2 class="text-h5 text-weight-bold q-mt-none q-mb-lg">Products</h2>
+        <h2
+          :class="{
+            'text-weight-bold q-mt-none q-mb-lg': true,
+            'text-h5': $q.screen.gt.xs,
+            'text-h6': $q.screen.lt.sm,
+          }"
+        >
+          Products
+        </h2>
 
         <q-expansion-item
           class="bg-grey-1 text-subtitle1 text-weight-bold faqs__expansion q-mb-lg"
           label="How can I find products on your website?"
           expand-icon="angle-down"
         >
-          <q-card class="bg-grey-1 text-body2 text-weight-medium text-dark">
+          <q-card class="bg-grey-1 text-body2 text-weight-regular text-dark">
             <q-card-section class="q-pt-sm">
               Utilize the search bar at the top of the page or browse through
               our categories to find the products you're looking for. You can
@@ -71,7 +87,7 @@
           label="Are product images accurate to the actual items?"
           expand-icon="angle-down"
         >
-          <q-card class="bg-grey-1 text-body2 text-weight-medium text-dark">
+          <q-card class="bg-grey-1 text-body2 text-weight-regular text-dark">
             <q-card-section class="q-pt-sm">
               Yes, our product images are professionally taken and accurately
               represent the items you will receive. However, please note that
@@ -86,7 +102,7 @@
           label="What if the product I want is out of stock?"
           expand-icon="angle-down"
         >
-          <q-card class="bg-grey-1 text-body2 text-weight-medium text-dark">
+          <q-card class="bg-grey-1 text-body2 text-weight-regular text-dark">
             <q-card-section class="q-pt-sm">
               If a product is out of stock, you can sign up for notifications to
               be informed when it becomes available again. Alternatively, check
@@ -100,7 +116,7 @@
           label="Do you offer product customization or personalization?"
           expand-icon="angle-down"
         >
-          <q-card class="bg-grey-1 text-body2 text-weight-medium text-dark">
+          <q-card class="bg-grey-1 text-body2 text-weight-regular text-dark">
             <q-card-section class="q-pt-sm">
               Yes, we offer customization options on select products. Look for
               the customization tab on the product page for details on available
@@ -126,7 +142,7 @@
           label="What are your shipping options and delivery times?"
           expand-icon="angle-down"
         >
-          <q-card class="bg-grey-1 text-body2 text-weight-medium text-dark">
+          <q-card class="bg-grey-1 text-body2 text-weight-regular text-dark">
             <q-card-section class="q-pt-sm">
               We offer standard and express shipping options. Delivery times
               vary based on your location and the chosen shipping method. You
@@ -140,7 +156,7 @@
           label="How can I track my order?"
           expand-icon="angle-down"
         >
-          <q-card class="bg-grey-1 text-body2 text-weight-medium text-dark">
+          <q-card class="bg-grey-1 text-body2 text-weight-regular text-dark">
             <q-card-section class="q-pt-sm">
               Once your order is shipped, you will receive a tracking number via
               email. Use this number on our "Track Order" page to monitor the
@@ -154,7 +170,7 @@
           label="What is your return policy?"
           expand-icon="angle-down"
         >
-          <q-card class="bg-grey-1 text-body2 text-weight-medium text-dark">
+          <q-card class="bg-grey-1 text-body2 text-weight-regular text-dark">
             <q-card-section class="q-pt-sm">
               Our return policy allows you to return items within 30 days of
               purchase for a full refund. Please review our "Returns and
@@ -177,11 +193,6 @@ const heroCard: HeroCardProps = {
 </script>
 
 <style scoped>
-.faqs {
-  max-width: 1000px;
-  padding: 80px 0 0 0;
-}
-
 .faqs__expansion {
   border-radius: 10px;
 }

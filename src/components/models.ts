@@ -6,6 +6,7 @@ export interface EssentialLinkProps {
 export interface HeroCardProps {
   title: string;
   description?: string;
+  image?: string;
 }
 
 export interface Product {
