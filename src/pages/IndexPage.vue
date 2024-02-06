@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import { Product } from 'components/models';
+import { Product } from 'src/components/models/general';
 import { ref } from 'vue';
 import { productStore } from 'src/stores/products';
 import { onMounted } from 'vue';

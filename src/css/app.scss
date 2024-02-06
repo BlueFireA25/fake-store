@@ -54,6 +54,15 @@ p {
 }
 
 /*==================== useful classes ====================*/
+.q-field .q-field__control {
+  border-radius: 10px !important;
+  background-color: $grey-1;
+
+  .q-field__native {
+    color: $dark;
+  }
+}
+
 .q-btn {
   border-radius: 10px;
 }

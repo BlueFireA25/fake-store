@@ -11,6 +11,16 @@ const routes: RouteRecordRaw[] = [
         component: () => import('pages/IndexPage.vue'),
       },
       {
+        path: 'login',
+        name: 'Login',
+        component: () => import('pages/LoginPage.vue'),
+      },
+      {
+        path: 'shop',
+        name: 'Shop',
+        component: () => import('pages/ShopPage.vue'),
+      },
+      {
         path: 'about',
         name: 'About',
         component: () => import('pages/AboutPage.vue'),
@@ -24,6 +34,11 @@ const routes: RouteRecordRaw[] = [
         path: 'faqs',
         name: 'Faqs',
         component: () => import('pages/FaqsPage.vue'),
+      },
+      {
+        path: 'contact',
+        name: 'Contact',
+        component: () => import('pages/ContactPage.vue'),
       },
       {
         path: 'privacy-policy',

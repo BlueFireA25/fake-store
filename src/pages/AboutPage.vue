@@ -85,7 +85,7 @@
 
 <script setup lang="ts">
 import HeroCard from 'src/components/HeroCard.vue';
-import { HeroCardProps } from 'src/components/models';
+import { HeroCardProps } from 'src/components/models/general';
 
 const heroCard: HeroCardProps = {
   title: 'About Gravity Creation',

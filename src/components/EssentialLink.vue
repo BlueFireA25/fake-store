@@ -18,7 +18,7 @@
 
 <script setup lang="ts">
 import { PropType } from 'vue';
-import { EssentialLinkProps } from './models';
+import { EssentialLinkProps } from 'src/components/models/general';
 
 defineProps({
   essentialLinks: {

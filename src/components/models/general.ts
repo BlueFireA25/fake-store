@@ -7,6 +7,12 @@ export interface HeroCardProps {
   title: string;
   description?: string;
   image?: string;
+  socials?: Social[];
+}
+
+export interface Social {
+  icon: string;
+  link: string;
 }
 
 export interface Product {

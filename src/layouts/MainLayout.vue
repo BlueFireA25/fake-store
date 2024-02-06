@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lhh Lpr lff">
+  <q-layout view="lhh lpr lff">
     <q-header class="row justify-center bg-white q-py-lg q-px-md">
       <q-toolbar class="justify-between items-center toolbar q-px-none">
         <q-img
@@ -18,7 +18,13 @@
         </div>
 
         <div class="row items-center q-gutter-x-lg">
-          <q-btn flat round color="dark" icon="setting" v-if="$q.screen.gt.sm">
+          <q-btn
+            flat
+            round
+            color="dark"
+            icon="user-circle"
+            v-if="$q.screen.gt.sm"
+          >
             <q-menu
               :offset="[50, 15]"
               transition-show="scale"
@@ -33,7 +39,7 @@
 
                 <q-separator vertical inset class="q-mx-lg" />
 
-                <div class="column items-center">
+                <div class="column items-center" v-if="loggedUser">
                   <q-avatar size="72px">
                     <q-img
                       src="https://cdn.quasar.dev/img/avatar4.jpg"
@@ -44,7 +50,7 @@
                   </q-avatar>
 
                   <div class="text-subtitle1 text-dark q-mt-sm q-mb-xs">
-                    John Doe
+                    {{ loggedUser.username }}
                   </div>
 
                   <q-btn
@@ -53,6 +59,31 @@
                     label="Logout"
                     push
                     size="sm"
+                    @click="logout"
+                    v-close-popup
+                  />
+                </div>
+                <div class="column justify-center items-center" v-else>
+                  <q-btn
+                    class="q-mb-md"
+                    color="dark"
+                    text-color="white"
+                    label="Sign in"
+                    push
+                    no-caps
+                    size="sm"
+                    :to="{ name: 'Login' }"
+                    v-close-popup
+                  />
+                  <q-btn
+                    color="dark"
+                    text-color="dark"
+                    label="Sign up"
+                    push
+                    no-caps
+                    outline
+                    size="sm"
+                    disable
                     v-close-popup
                   />
                 </div>
@@ -130,7 +161,7 @@
           <EssentialLink :essential-links="essentialLinksHeader" />
         </div>
 
-        <q-btn flat round color="dark" icon="setting">
+        <q-btn flat round color="dark" icon="user-circle">
           <q-menu
             :offset="[100, 15]"
             transition-show="scale"
@@ -145,7 +176,7 @@
 
               <q-separator vertical inset class="q-mx-lg" />
 
-              <div class="column items-center">
+              <div class="column items-center" v-if="loggedUser">
                 <q-avatar size="72px">
                   <q-img
                     src="https://cdn.quasar.dev/img/avatar4.jpg"
@@ -156,7 +187,7 @@
                 </q-avatar>
 
                 <div class="text-subtitle1 text-dark q-mt-sm q-mb-xs">
-                  John Doe
+                  {{ loggedUser.username }}
                 </div>
 
                 <q-btn
@@ -165,6 +196,31 @@
                   label="Logout"
                   push
                   size="sm"
+                  @click="logout"
+                  v-close-popup
+                />
+              </div>
+              <div class="column justify-center items-center" v-else>
+                <q-btn
+                  class="q-mb-md"
+                  color="dark"
+                  text-color="white"
+                  label="Sign in"
+                  push
+                  no-caps
+                  size="sm"
+                  :to="{ name: 'Login' }"
+                  v-close-popup
+                />
+                <q-btn
+                  color="dark"
+                  text-color="dark"
+                  label="Sign up"
+                  push
+                  no-caps
+                  outline
+                  size="sm"
+                  disable
                   v-close-popup
                 />
               </div>
@@ -238,9 +294,12 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { EssentialLinkProps } from 'src/components/models';
-import EssentialLink from 'components/EssentialLink.vue';
+import { useRouter } from 'vue-router';
+import { EssentialLinkProps } from 'src/components/models/general';
+import { loggedUser } from 'src/components/models/user';
+import EssentialLink from 'src/components/EssentialLink.vue';
 
+const router = useRouter();
 const essentialLinksHeader: EssentialLinkProps[] = [
   {
     title: 'Home',
@@ -248,7 +307,7 @@ const essentialLinksHeader: EssentialLinkProps[] = [
   },
   {
     title: 'Shop',
-    link: 'Hol',
+    link: 'Shop',
   },
   {
     title: 'About',
@@ -260,10 +319,9 @@ const essentialLinksHeader: EssentialLinkProps[] = [
   },
   {
     title: 'Contact',
-    link: 'fdf',
+    link: 'Contact',
   },
 ];
-
 const essentialLinksFooter: EssentialLinkProps[] = [
   {
     title: 'Home',
@@ -271,7 +329,7 @@ const essentialLinksFooter: EssentialLinkProps[] = [
   },
   {
     title: 'Shop',
-    link: 'Hol',
+    link: 'Shop',
   },
   {
     title: 'About',
@@ -287,7 +345,7 @@ const essentialLinksFooter: EssentialLinkProps[] = [
   },
   {
     title: 'Contact',
-    link: 'fdf',
+    link: 'Contact',
   },
   {
     title: 'Privacy Policy',
@@ -300,10 +358,14 @@ const essentialLinksFooter: EssentialLinkProps[] = [
 ];
 
 const leftDrawerOpen = ref<boolean>(false);
-
-function toggleLeftDrawer() {
+const toggleLeftDrawer = () => {
   leftDrawerOpen.value = !leftDrawerOpen.value;
-}
+};
+
+const logout = (): void => {
+  loggedUser.value = null;
+  router.push({ name: 'Login' });
+};
 </script>
 
 <style scoped lang="scss">

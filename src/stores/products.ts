@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { Notify } from 'quasar';
 import { api } from 'src/boot/axios';
-import { Product } from 'src/components/models';
+import { Product } from 'src/components/models/general';
 
 function defaultState(): Product[] {
   return [];

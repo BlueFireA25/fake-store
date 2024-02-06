@@ -17,9 +17,8 @@
           'text-body2': $q.screen.lt.md,
         }"
         v-if="heroCard.description"
-      >
-        {{ heroCard.description }}
-      </p>
+        v-html="heroCard.description"
+      ></p>
       <q-img
         v-if="heroCard.image"
         :src="heroCard.image"
@@ -28,13 +27,23 @@
         spinner-color="dark"
         spinner-size="50px"
       />
+      <div
+        v-if="heroCard.socials"
+        class="row justify-center items-center q-col-gutter-lg"
+      >
+        <div v-for="social in heroCard.socials" :key="social.icon">
+          <a :href="social.link" target="_blank">
+            <q-icon :name="social.icon" size="24px" color="dark" />
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { PropType } from 'vue';
-import { HeroCardProps } from './models';
+import { HeroCardProps } from 'src/components/models/general';
 
 defineProps({
   heroCard: {
