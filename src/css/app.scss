@@ -77,6 +77,10 @@ p {
   }
 }
 
+.q-carousel__slide {
+  background-image: none !important;
+}
+
 .hero__card {
   max-width: 1200px;
   border-radius: 10px;
@@ -92,6 +96,16 @@ p {
   width: 70%;
 }
 
+.product__card {
+  border-radius: 10px;
+  width: 368px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.product__card:hover {
+  transform: scale(1.02);
+}
+
 @media (max-width: $breakpoint-xs-max) {
   .hero__card {
     padding: 20px;
@@ -99,5 +113,9 @@ p {
 
   .hero__card > div:first-child {
     width: 95%;
+  }
+
+  .product__card {
+    width: 288px;
   }
 }

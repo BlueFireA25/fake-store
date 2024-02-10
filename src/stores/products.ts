@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { Notify } from 'quasar';
 import { api } from 'src/boot/axios';
-import { Product } from 'src/components/models/general';
+import { Product } from 'src/components/models/product';
 
 function defaultState(): Product[] {
   return [];
@@ -15,6 +15,7 @@ export const productStore = defineStore('products', {
       try {
         const response = await api.get('/products');
         const products = response.data as Product[];
+        this.$state = products;
 
         return products;
       } catch (error) {

@@ -101,6 +101,7 @@
             icon="shopping-cart-alt"
             label="Cart"
             aria-label="Cart"
+            @click="openShoppingCart"
           >
             <q-badge
               class="text-weight-bold shadow-3"
@@ -109,7 +110,7 @@
               floating
               rounded
             >
-              4
+              {{ cart }}
             </q-badge>
           </q-btn>
 
@@ -277,6 +278,7 @@
         padding="12px md"
         icon="shopping-cart-alt"
         aria-label="Cart"
+        @click="openShoppingCart"
       >
         <q-badge
           class="text-weight-bold shadow-3"
@@ -285,7 +287,7 @@
           floating
           rounded
         >
-          4
+          {{ cart }}
         </q-badge>
       </q-btn>
     </q-page-sticky>
@@ -293,13 +295,32 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import { useRouter } from 'vue-router';
+import { useQuasar } from 'quasar';
 import { EssentialLinkProps } from 'src/components/models/general';
 import { loggedUser } from 'src/components/models/user';
 import EssentialLink from 'src/components/EssentialLink.vue';
+import ShoppingCart from 'src/components/ShoppingCart.vue';
+import { cartStore } from 'src/stores/cart';
+import { userStore } from 'src/stores/user';
 
+const $q = useQuasar();
 const router = useRouter();
+const userStoreInstance = userStore();
+const cartStoreInstance = cartStore();
+const cart = computed(() => {
+  if (cartStoreInstance.$state.products) {
+    const totalProducts = cartStoreInstance.$state.products.reduce(
+      (total, product) => total + product.quantity,
+      0
+    );
+
+    return totalProducts;
+  }
+  return 0;
+});
+
 const essentialLinksHeader: EssentialLinkProps[] = [
   {
     title: 'Home',
@@ -362,10 +383,40 @@ const toggleLeftDrawer = () => {
   leftDrawerOpen.value = !leftDrawerOpen.value;
 };
 
+const openShoppingCart = () => {
+  $q.dialog({
+    component: ShoppingCart,
+  });
+};
+
 const logout = (): void => {
   loggedUser.value = null;
+  window.localStorage.removeItem('user');
+
+  // Delete userId Cart
+  cartStoreInstance.updateCart();
+
   router.push({ name: 'Login' });
 };
+
+onMounted(() => {
+  cartStoreInstance.addCart();
+  userStoreInstance.allUsers().then((response) => {
+    if (response) {
+      const userFromStorage = window.localStorage.getItem('user');
+
+      if (userFromStorage) {
+        loggedUser.value = JSON.parse(userFromStorage);
+
+        // Add userId Cart
+        const user = response.find(
+          (user) => user.username === loggedUser.value?.username
+        );
+        cartStoreInstance.updateCart(user);
+      }
+    }
+  });
+});
 </script>
 
 <style scoped lang="scss">

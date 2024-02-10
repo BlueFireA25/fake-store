@@ -7,7 +7,7 @@
         <q-card-section class="bg-grey-1 q-pa-lg">
           <h2
             :class="{
-              'text-weight-bold q-my-none': true,
+              'text-dark text-weight-bold q-my-none': true,
               'text-h5': $q.screen.gt.xs,
               'text-h6': $q.screen.lt.sm,
             }"

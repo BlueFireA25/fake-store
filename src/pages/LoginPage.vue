@@ -48,7 +48,7 @@
                   </div>
                 </div>
               </div>
-              <q-separator inset class="full-width" color="gre-y1" />
+              <q-separator inset class="full-width" />
             </div>
           </q-card-section>
         </q-card>
@@ -171,7 +171,7 @@
                 </div>
               </div>
             </div>
-            <q-separator inset class="full-width" color="gre-y1" />
+            <q-separator inset class="full-width" />
           </div>
         </q-card-section>
       </q-card>
@@ -184,12 +184,14 @@ import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { useQuasar } from 'quasar';
 import { userStore } from 'src/stores/user';
+import { cartStore } from 'src/stores/cart';
 import { UserLogin, loggedUser } from 'src/components/models/user';
 
 const $q = useQuasar();
 const router = useRouter();
-const store = userStore();
-const users = store.$state;
+const userStoreInstance = userStore();
+const cartStoreInstance = cartStore();
+const users = userStoreInstance.$state;
 
 const username = ref<string>('');
 const password = ref<string>('');
@@ -209,11 +211,19 @@ const onSubmit = (): void => {
     password: password.value,
   };
 
-  store
+  userStoreInstance
     .userLogin(userLogin)
     .then((response) => {
       if (response) {
         loggedUser.value = userLogin;
+        window.localStorage.setItem('user', JSON.stringify(loggedUser.value));
+
+        // Add userId Cart
+        const user = users.find(
+          (user) => user.username === loggedUser.value?.username
+        );
+        if (user) cartStoreInstance.updateCart(user);
+
         router.push({ name: 'Home' });
 
         $q.notify({
@@ -249,7 +259,7 @@ const loginClipboard = (name: string, userPassword: string): void => {
  * In this case, it triggers the retrieval of all users from the store.
  */
 onMounted(() => {
-  store.allUsers();
+  userStoreInstance.allUsers();
 });
 </script>
 
