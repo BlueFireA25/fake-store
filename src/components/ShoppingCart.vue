@@ -202,7 +202,7 @@ const calculateSubTotal = (): number => {
     }
   }
 
-  return subTotal;
+  return parseFloat(subTotal.toFixed(2));
 };
 
 /**
