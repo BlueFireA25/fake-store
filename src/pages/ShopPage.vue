@@ -3,7 +3,7 @@
     <HeroCard :hero-card="heroCard" />
 
     <div class="shop__container q-mx-auto q-px-md">
-      <BestProducts :products="products" />
+      <ProductList :products="products" />
     </div>
   </q-page>
 </template>
@@ -12,7 +12,7 @@
 import { HeroCardProps } from 'src/components/models/general';
 import { productStore } from 'src/stores/products';
 import HeroCard from 'src/components/HeroCard.vue';
-import BestProducts from 'src/components/ProductList.vue';
+import ProductList from 'src/components/ProductList.vue';
 
 const heroCard: HeroCardProps = {
   title: 'Shop',

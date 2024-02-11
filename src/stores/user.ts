@@ -14,9 +14,10 @@ export const userStore = defineStore('users', {
     /**
      * Fetches all users asynchronously from the API.
      *
-     * @returns A promise that resolves to an array of users or undefined in case of an error.
+     * @returns A promise that resolves to an array of users.
+     * @throws Throws an error if there is an issue loading the users list.
      */
-    async allUsers(): Promise<User[] | undefined> {
+    async allUsers(): Promise<User[]> {
       try {
         const response = await api.get('/users?limit=5');
         const users = response.data as User[];
@@ -25,11 +26,17 @@ export const userStore = defineStore('users', {
         return users;
       } catch (error) {
         Notify.create({
-          icon: 'warning',
+          icon: 'exclamation-triangle',
           type: 'negative',
-          message: 'Error loading Users list.',
+          message: 'Error loading Users list',
+          position: 'bottom-left',
+          progress: true,
           timeout: 2000,
+          classes: 'text-weight-medium',
+          textColor: 'white',
         });
+
+        throw new Error('Error loading Users list');
       }
     },
 
@@ -37,9 +44,10 @@ export const userStore = defineStore('users', {
      * Fetches a single user asynchronously from the API based on the provided userId.
      *
      * @param userId - The unique identifier of the user.
-     * @returns A promise that resolves to a user object or undefined in case of an error.
+     * @returns A promise that resolves to a user object.
+     * @throws Throws an error if there is an issue loading the user.
      */
-    async singleUser(userId: string): Promise<User | undefined> {
+    async singleUser(userId: string): Promise<User> {
       try {
         const response = await api.get(`/users/${userId}`);
         const user = response.data as User;
@@ -47,11 +55,17 @@ export const userStore = defineStore('users', {
         return user;
       } catch (error) {
         Notify.create({
-          icon: 'warning',
+          icon: 'exclamation-triangle',
           type: 'negative',
-          message: 'Error loading User.',
+          message: 'Error loading User',
+          position: 'bottom-left',
+          progress: true,
           timeout: 2000,
+          classes: 'text-weight-medium',
+          textColor: 'white',
         });
+
+        throw new Error('Error loading User');
       }
     },
 
@@ -59,9 +73,10 @@ export const userStore = defineStore('users', {
      * Performs user login asynchronously by sending a POST request to the authentication endpoint.
      *
      * @param userLogin - The user login credentials.
-     * @returns A promise that resolves to an authentication token or undefined in case of an error.
+     * @returns A promise that resolves to an authentication token.
+     * @throws Throws an error if there is an issue loading in the login.
      */
-    async userLogin(userLogin: UserLogin): Promise<string | undefined> {
+    async userLogin(userLogin: UserLogin): Promise<string> {
       try {
         const response = await api.post('/auth/login', userLogin);
         const token = response.data as string;
@@ -69,11 +84,17 @@ export const userStore = defineStore('users', {
         return token;
       } catch (error) {
         Notify.create({
-          icon: 'warning',
+          icon: 'exclamation-triangle',
           type: 'negative',
-          message: 'Error in Login.',
+          message: 'Error in Login',
+          position: 'bottom-left',
+          progress: true,
           timeout: 2000,
+          classes: 'text-weight-medium',
+          textColor: 'white',
         });
+
+        throw new Error('Error in Login');
       }
     },
   },

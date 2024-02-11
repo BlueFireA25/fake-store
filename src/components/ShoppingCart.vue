@@ -57,6 +57,7 @@
               </div>
             </div>
             <q-input
+              onkeydown="return false"
               v-bind:model-value="product.quantity"
               :class="{ 'col-2': $q.screen.gt.xs, 'col-12': $q.screen.lt.sm }"
               color="dark"
@@ -168,7 +169,7 @@ const setProduct = (
 ): void => {
   if (product) {
     if (Number(inputQuantity) > productQuantity) {
-      cartStoreInstance.addProductCart(product);
+      cartStoreInstance.addProductCart(product, 1);
     } else {
       cartStoreInstance.removeProductCart(product);
     }

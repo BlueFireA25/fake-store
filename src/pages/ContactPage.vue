@@ -5,7 +5,7 @@
     <div class="container q-mx-auto q-px-md">
       <h2
         :class="{
-          'contact__container--title text-weight-bold q-mt-none q-mb-xl': true,
+          'contact__container--title text-dark text-weight-bold q-mt-none q-mb-xl': true,
           'text-h4': $q.screen.gt.xs,
           'text-h5': $q.screen.lt.sm,
         }"

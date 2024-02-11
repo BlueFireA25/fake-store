@@ -14,6 +14,7 @@ export const cartStore = defineStore('cart', {
   actions: {
     /**
      * Adds a new cart to state.
+     *
      * @returns The newly created cart object with an id, current date, and an empty array of products.
      */
     addCart(): Cart {
@@ -30,6 +31,7 @@ export const cartStore = defineStore('cart', {
 
     /**
      * Updates the current cart by optionally associating it with a user.
+     *
      * @param user - Optional parameter representing the user to associate with the cart.
      * @returns The updated cart object after the association with the provided user, or without a user if not provided.
      */
@@ -46,10 +48,11 @@ export const cartStore = defineStore('cart', {
     /**
      * Adds a product to the current cart and returns the added product.
      * If the product is already in the cart, its quantity is increased.
+     *
      * @param product - The product to be added to the cart.
      * @returns The added product.
      */
-    addProductCart(product: Product): Product {
+    addProductCart(product: Product, quantityProduct: number): Product {
       // Search for the product to be added to the `this.$state.cart`
       const existingProductIndex = this.$state.products.findIndex(
         (item) => item.productId === product.id
@@ -57,12 +60,12 @@ export const cartStore = defineStore('cart', {
 
       if (existingProductIndex !== -1) {
         // The product is already in the cart, the quantity is increased.
-        this.$state.products[existingProductIndex].quantity++;
+        this.$state.products[existingProductIndex].quantity += quantityProduct;
       } else {
         // The product is not in the cart, it is added as new.
         const productCart: ProductCart = {
           productId: product.id,
-          quantity: 1,
+          quantity: quantityProduct,
         };
 
         this.$state.products.push(productCart);
@@ -84,6 +87,7 @@ export const cartStore = defineStore('cart', {
 
     /**
      * Removes all occurrences of a specific product from the current cart.
+     *
      * @param product - The product to be completely removed from the cart.
      * @returns The product that has been completely removed from the cart.
      */

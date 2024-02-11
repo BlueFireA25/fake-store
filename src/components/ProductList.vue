@@ -12,7 +12,7 @@
       >
         <q-card-section
           class="q-pa-none q-mb-md cursor-pointer"
-          @click="() => console.log('asd')"
+          @click="productInformation(product.id)"
         >
           <q-img
             :src="product.image"
@@ -70,6 +70,7 @@
 
 <script setup lang="ts">
 import { PropType } from 'vue';
+import { useRouter } from 'vue-router';
 import { useQuasar } from 'quasar';
 import { Product } from 'src/components/models/product';
 import { cartStore } from 'src/stores/cart';
@@ -82,10 +83,15 @@ defineProps({
 });
 
 const $q = useQuasar();
+const router = useRouter();
 const store = cartStore();
 
 const addProduct = (product: Product) => {
-  store.addProductCart(product);
+  store.addProductCart(product, 1);
+};
+
+const productInformation = (productId: number) => {
+  router.push({ name: 'Product', params: { id: productId } });
 };
 </script>
 

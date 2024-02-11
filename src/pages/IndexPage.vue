@@ -219,13 +219,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, computed } from 'vue';
+import { ref, computed } from 'vue';
 import { productStore } from 'src/stores/products';
 import BestProducts from 'src/components/ProductList.vue';
 
-const store = productStore();
+const productStoreInstance = productStore();
 const products = computed(() => {
-  const bestProducts = store.$state.filter((prod) => {
+  const bestProducts = productStoreInstance.$state.filter((prod) => {
     if (prod.rating.rate >= 4.3) return prod;
   });
 
@@ -264,10 +264,6 @@ const reviews = [
   },
 ];
 const brandsTabs = ref<string>('vertrio');
-
-onMounted(async () => {
-  await store.allProducts();
-});
 </script>
 
 <style scoped lang="scss">

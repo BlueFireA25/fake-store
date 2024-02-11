@@ -56,7 +56,7 @@
 
       <h1
         :class="{
-          'contact__container--title text-weight-bold q-mt-none q-mb-xl text-center': true,
+          'contact__container--title text-weight-bold text-dark q-mt-none q-mb-xl text-center': true,
           'text-h4': $q.screen.gt.xs,
           'text-h5': $q.screen.lt.sm,
         }"
@@ -180,7 +180,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useQuasar } from 'quasar';
 import { userStore } from 'src/stores/user';
@@ -253,14 +253,6 @@ const loginClipboard = (name: string, userPassword: string): void => {
   password.value = userPassword;
   expanded.value = false;
 };
-
-/**
- * Executes the provided callback function when the component is mounted.
- * In this case, it triggers the retrieval of all users from the store.
- */
-onMounted(() => {
-  userStoreInstance.allUsers();
-});
 </script>
 
 <style scoped lang="scss">

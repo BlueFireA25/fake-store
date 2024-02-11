@@ -6,7 +6,7 @@
       <div :class="{ row: $q.screen.gt.sm, column: $q.screen.lt.sm }">
         <h2
           :class="{
-            'col-4 text-weight-bold q-mt-none q-mb-lg': true,
+            'col-4 text-dark text-weight-bold q-mt-none q-mb-lg': true,
             'text-h4': $q.screen.gt.xs,
             'text-h5': $q.screen.lt.sm,
           }"

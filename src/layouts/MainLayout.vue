@@ -302,11 +302,13 @@ import { EssentialLinkProps } from 'src/components/models/general';
 import { loggedUser } from 'src/components/models/user';
 import EssentialLink from 'src/components/EssentialLink.vue';
 import ShoppingCart from 'src/components/ShoppingCart.vue';
+import { productStore } from 'src/stores/products';
 import { cartStore } from 'src/stores/cart';
 import { userStore } from 'src/stores/user';
 
 const $q = useQuasar();
 const router = useRouter();
+const productStoreInstance = productStore();
 const userStoreInstance = userStore();
 const cartStoreInstance = cartStore();
 const cart = computed(() => {
@@ -383,12 +385,18 @@ const toggleLeftDrawer = () => {
   leftDrawerOpen.value = !leftDrawerOpen.value;
 };
 
+/**
+ * Opens the shopping cart dialog to display the current contents of the cart.
+ */
 const openShoppingCart = () => {
   $q.dialog({
     component: ShoppingCart,
   });
 };
 
+/**
+ * Logs out the currently logged-in user, clears user data, and navigates to the login page.
+ */
 const logout = (): void => {
   loggedUser.value = null;
   window.localStorage.removeItem('user');
@@ -400,6 +408,7 @@ const logout = (): void => {
 };
 
 onMounted(() => {
+  productStoreInstance.allProducts();
   cartStoreInstance.addCart();
   userStoreInstance.allUsers().then((response) => {
     if (response) {

@@ -6,7 +6,7 @@
       <div class="q-mb-xl">
         <h2
           :class="{
-            'text-weight-bold q-mt-none q-mb-lg': true,
+            'text-weight-bold text-dark q-mt-none q-mb-lg': true,
             'text-h5': $q.screen.gt.xs,
             'text-h6': $q.screen.lt.sm,
           }"
