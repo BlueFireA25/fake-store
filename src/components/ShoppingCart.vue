@@ -56,22 +56,61 @@
                 />
               </div>
             </div>
-            <q-input
-              onkeydown="return false"
-              v-bind:model-value="product.quantity"
-              :class="{ 'col-2': $q.screen.gt.xs, 'col-12': $q.screen.lt.sm }"
-              color="dark"
-              outlined
-              type="number"
-              min="1"
-              @update:model-value="
-                setProduct(
-                  getProduct(product.productId),
-                  product.quantity,
-                  $event
-                )
-              "
-            />
+            <div
+              :class="{
+                'row items-center q-col-gutter-md': true,
+                'full-width': $q.screen.lt.md,
+                col: $q.screen.gt.sm,
+              }"
+            >
+              <div class="col-auto" v-if="$q.screen.lt.md">
+                <q-btn
+                  round
+                  flat
+                  icon="minus"
+                  text-color="dark"
+                  @click="
+                    cartStoreInstance.removeProductCart(
+                      getProduct(product.productId)
+                    )
+                  "
+                />
+              </div>
+
+              <q-input
+                onkeydown="return false"
+                v-bind:model-value="product.quantity"
+                :class="{
+                  col: $q.screen.lt.md,
+                }"
+                color="dark"
+                outlined
+                type="number"
+                min="1"
+                @update:model-value="
+                  setProduct(
+                    getProduct(product.productId),
+                    product.quantity,
+                    $event
+                  )
+                "
+              />
+
+              <div class="col-auto" v-if="$q.screen.lt.md">
+                <q-btn
+                  round
+                  flat
+                  icon="plus"
+                  text-color="dark"
+                  @click="
+                    cartStoreInstance.addProductCart(
+                      getProduct(product.productId),
+                      1
+                    )
+                  "
+                />
+              </div>
+            </div>
           </div>
           <q-separator inset class="full-width" />
         </div>
@@ -149,10 +188,15 @@ const checkout = ref<boolean>(false);
 /**
  * Retrieves a product from the available products based on the provided productId.
  * @param productId - The unique identifier of the product to retrieve.
- * @returns The retrieved product, or undefined if the product with the given ID is not found.
+ * @returns The retrieved product.
  */
-const getProduct = (productId: number): Product | undefined => {
+const getProduct = (productId: number): Product => {
   const product = products.find((prod) => prod.id === productId);
+
+  if (!product) {
+    throw new Error(`No product was found with the id ${productId}`);
+  }
+
   return product;
 };
 
