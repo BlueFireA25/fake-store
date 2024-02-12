@@ -65,6 +65,7 @@
             >
               <div class="col-auto" v-if="$q.screen.lt.md">
                 <q-btn
+                  :disable="product.quantity === 1 ? true : false"
                   round
                   flat
                   icon="minus"

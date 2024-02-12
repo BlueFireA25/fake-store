@@ -53,16 +53,13 @@ export const cartStore = defineStore('cart', {
      * @returns The added product.
      */
     addProductCart(product: Product, quantityProduct: number): Product {
-      // Search for the product to be added to the `this.$state.cart`
       const existingProductIndex = this.$state.products.findIndex(
         (item) => item.productId === product.id
       );
 
       if (existingProductIndex !== -1) {
-        // The product is already in the cart, the quantity is increased.
         this.$state.products[existingProductIndex].quantity += quantityProduct;
       } else {
-        // The product is not in the cart, it is added as new.
         const productCart: ProductCart = {
           productId: product.id,
           quantity: quantityProduct,
@@ -92,13 +89,11 @@ export const cartStore = defineStore('cart', {
      * @returns The product that has been completely removed from the cart.
      */
     removeAllProductCart(product: Product): Product {
-      // Search for the product to be added to the `this.$state.cart`
       const existingProductIndex = this.$state.products.findIndex(
         (item) => item.productId === product.id
       );
 
       if (existingProductIndex !== -1) {
-        // The product is already in the cart, the all product removed.
         this.$state.products.splice(existingProductIndex, 1);
       }
 
@@ -112,13 +107,11 @@ export const cartStore = defineStore('cart', {
      * @returns The removed product.
      */
     removeProductCart(product: Product): Product {
-      // Search for the product to be added to the `this.$state.cart`
       const existingProductIndex = this.$state.products.findIndex(
         (item) => item.productId === product.id
       );
 
       if (existingProductIndex !== -1) {
-        // The product is already in the cart, the quantity is diminishes.
         this.$state.products[existingProductIndex].quantity--;
       }
 
