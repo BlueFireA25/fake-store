@@ -6,6 +6,7 @@
       :to="{ name: essentialLink.link }"
       exact
       exact-active-class="active-link"
+      role="link"
     >
       <q-item-section>
         <q-item-label>

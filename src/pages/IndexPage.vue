@@ -219,7 +219,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import { productStore } from 'src/stores/products';
 import BestProducts from 'src/components/ProductList.vue';
 
@@ -264,6 +264,33 @@ const reviews = [
   },
 ];
 const brandsTabs = ref<string>('vertrio');
+
+const setActiveReviewAlt = (): void => {
+  const reviewActive: HTMLCollectionOf<Element> =
+    document.getElementsByClassName('q-carousel__thumbnail--active');
+
+  if (reviewActive.length > 0) {
+    for (const review of reviewActive) {
+      review.setAttribute('alt', 'Review active');
+    }
+  }
+};
+
+const setInactivesReviewsAlt = (): void => {
+  const reviewInactive: HTMLCollectionOf<Element> =
+    document.getElementsByClassName('q-carousel__thumbnail--inactive');
+
+  if (reviewInactive.length > 0) {
+    for (const review of reviewInactive) {
+      review.setAttribute('alt', 'Review inactive');
+    }
+  }
+};
+
+onMounted(() => {
+  setActiveReviewAlt();
+  setInactivesReviewsAlt();
+});
 </script>
 
 <style scoped lang="scss">

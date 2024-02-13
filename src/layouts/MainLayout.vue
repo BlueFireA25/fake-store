@@ -3,7 +3,7 @@
     <q-header class="row justify-center bg-white q-py-lg q-px-md">
       <q-toolbar class="justify-between items-center toolbar q-px-none">
         <q-img
-          src="https://assets-global.website-files.com/654c5f578cae1dae48ca94a1/65574e271e32ab415a28fe78_gravitycreation.svg"
+          src="../assets/nebula-logo.svg"
           alt="Logo"
           :ratio="16 / 9"
           spinner-color="primary"
@@ -24,6 +24,7 @@
             color="dark"
             icon="user-circle"
             v-if="$q.screen.gt.sm"
+            aria-label="User Menu"
           >
             <q-menu
               :offset="[50, 15]"
@@ -33,7 +34,6 @@
               <div class="row no-wrap q-pa-md">
                 <div class="column">
                   <div class="text-h6 text-dark q-mb-md">Settings</div>
-                  <q-btn flat round color="dark" icon="moon" />
                   <q-btn flat round color="dark" icon="language" />
                 </div>
 
@@ -135,7 +135,7 @@
           class="row justify-between items-center full-width q-pt-lg q-px-lg q-pb-xl"
         >
           <q-img
-            src="https://assets-global.website-files.com/654c5f578cae1dae48ca94a1/65574e271e32ab415a28fe78_gravitycreation.svg"
+            src="../assets/nebula-logo.svg"
             alt="Logo"
             :ratio="16 / 9"
             spinner-color="primary"
@@ -171,7 +171,6 @@
             <div class="row no-wrap q-pa-md">
               <div class="column">
                 <div class="text-h6 text-dark q-mb-md">Settings</div>
-                <q-btn flat round color="dark" icon="moon" />
                 <q-btn flat round color="dark" icon="language" />
               </div>
 
@@ -238,7 +237,7 @@
     <footer class="footer bg-white text-dark">
       <q-toolbar class="column q-pa-none">
         <q-img
-          src="https://assets-global.website-files.com/654c5f578cae1dae48ca94a1/65574e271e32ab415a28fe78_gravitycreation.svg"
+          src="../assets/nebula-logo.svg"
           alt="Logo"
           :ratio="16 / 9"
           class="q-mb-lg"

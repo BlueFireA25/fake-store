@@ -46,7 +46,7 @@
           <p class="text-subtitle1 text-dark text-weight-bold q-my-none">
             $ {{ product.price }} USD
           </p>
-          <span class="text-caption text-grey">
+          <span class="text-caption text-dark text-weight-medium">
             {{ product.category }}
           </span>
         </q-card-section>

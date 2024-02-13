@@ -32,7 +32,7 @@
         class="row justify-center items-center q-col-gutter-lg"
       >
         <div v-for="social in heroCard.socials" :key="social.icon">
-          <a :href="social.link" target="_blank">
+          <a :href="social.link" target="_blank" :aria-label="social.icon">
             <q-icon :name="social.icon" size="24px" color="dark" />
           </a>
         </div>

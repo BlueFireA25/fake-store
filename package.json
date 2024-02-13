@@ -2,7 +2,7 @@
   "name": "fake-store",
   "version": "0.0.1",
   "description": "A Fake Store",
-  "productName": "Fake Store",
+  "productName": "Nebula Store",
   "author": "Sebastián Ibagué Castro",
   "private": true,
   "scripts": {
