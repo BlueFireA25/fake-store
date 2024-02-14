@@ -17,9 +17,8 @@
         </q-card-section>
         <q-card-section>
           <p class="q-my-none">
-            All images in this template are sourced from Pexels and Freepik and,
-            are free for commercial use. Check out the license for Pexels here
-            and Freepik here.
+            All images in this page are sourced from and Unsplash, are for
+            commercial use.
           </p>
         </q-card-section>
       </q-card>
@@ -37,9 +36,7 @@
         </q-card-section>
         <q-card-section>
           <p class="q-my-none">
-            All Icons in this template are sourced from Flaticon and Iconstica
-            icon. Check out the license for Flaticon here and Iconstica icon
-            here.
+            All Icons in this page are sourced from Iconscout.
           </p>
         </q-card-section>
       </q-card>
@@ -57,9 +54,9 @@
         </q-card-section>
         <q-card-section>
           <p class="q-my-none">
-            All fonts used in this template are available to use freely under
-            the Google fonts License, Check out the license for Poppins fonts
-            license, and Inter fonts license.
+            All fonts used in this page are available to use freely under the
+            Google fonts License, Check out the license for Poppins fonts
+            license.
           </p>
         </q-card-section>
       </q-card>
@@ -74,7 +71,7 @@ import { HeroCardProps } from 'src/components/models/general';
 const heroCard: HeroCardProps = {
   title: 'Licenses',
   description:
-    "All graphical assets in this template are licensed for personal and commercial use. If you'd like to use a specific asset, please check the license below.",
+    "All graphical assets in this page are licensed for personal and commercial use. If you'd like to use a specific asset, please check the license below.",
 };
 </script>
 

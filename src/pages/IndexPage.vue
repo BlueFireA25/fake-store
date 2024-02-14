@@ -13,7 +13,7 @@
           day, for everyone.
         </h1>
         <p class="text-subtitle2 text-weight-medium text-dark q-mb-lg">
-          As seen on Webflow Conf
+          As seen on our best fashion catwalks
         </p>
         <q-btn
           label="Shop Now"
@@ -56,8 +56,8 @@
                 'text-h6': $q.screen.lt.md,
               }"
             >
-              There are many variations of passages of Lorem Ipsum available,
-              but the majority have in some form, by injected humour.
+              Step into a world of timeless elegance at Fashion Haven, where
+              curated collections showcase the latest trends and classic styles.
             </p>
           </q-tab-panel>
 
@@ -69,8 +69,8 @@
                 'text-h6': $q.screen.lt.md,
               }"
             >
-              Generate Lorem Ipsum which looks reasonable. The generated Lorem
-              Ipsum is therefore always free from repetition.
+              Embrace the urban vibe at Urban Threads, your go-to destination
+              for streetwear and urban fashion.
             </p>
           </q-tab-panel>
 
@@ -82,8 +82,8 @@
                 'text-h6': $q.screen.lt.md,
               }"
             >
-              Nam libero tempore, cum soluta nobis est eligendi optio cumque
-              nihil impedit quo minus id quod maxime placeat facere.
+              Discover your bohemian spirit at Boho Bliss Boutique, where
+              free-spirited fashion meets artistic expression.
             </p>
           </q-tab-panel>
 
@@ -95,8 +95,9 @@
                 'text-h6': $q.screen.lt.md,
               }"
             >
-              Shrinking from toil and pain. These cases are perfectly simple and
-              easy to distinguish. In a free hour, when our power of choice.
+              Elevate your sporty style at Sports Elite Outfitters, where
+              performance meets fashion. From activewear essentials to the
+              latest sports fashion trends.
             </p>
           </q-tab-panel>
         </q-tab-panels>
@@ -113,6 +114,7 @@
               <q-img
                 src="https://assets-global.website-files.com/654c5f578cae1dae48ca94a1/654da83fbd187659d9b0c954_client-01.svg"
                 alt="Logo vertrio"
+                loading="lazy"
                 :ratio="16 / 9"
                 spinner-color="primary"
                 spinner-size="82px"
@@ -127,6 +129,7 @@
               <q-img
                 src="https://assets-global.website-files.com/654c5f578cae1dae48ca94a1/654da83fbd187659d9b0c956_client-02.svg"
                 alt="Logo happenz"
+                loading="lazy"
                 :ratio="16 / 9"
                 spinner-color="primary"
                 spinner-size="82px"
@@ -141,6 +144,7 @@
               <q-img
                 src="https://assets-global.website-files.com/654c5f578cae1dae48ca94a1/654da83fbd187659d9b0c957_client-03.svg"
                 alt="Logo katerio"
+                loading="lazy"
                 :ratio="16 / 9"
                 spinner-color="primary"
                 spinner-size="82px"
@@ -155,6 +159,7 @@
               <q-img
                 src="https://assets-global.website-files.com/654c5f578cae1dae48ca94a1/654da83fbd187659d9b0c955_client-04.svg"
                 alt="Logo Qugrey"
+                loading="lazy"
                 :ratio="16 / 9"
                 spinner-color="primary"
                 spinner-size="82px"
@@ -238,28 +243,28 @@ const reviews = [
     name: 'Tatiana Echeverria',
     image: 'https://cdn.quasar.dev/img/avatar1.jpg',
     opinion:
-      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus animi nemo possimus quasi, ullam molestiae eum ea eos omnis?',
+      'My experience at Nebula Store was nothing short of amazing! The curated collections are like a constellation of fashion.',
     score: 4.5,
   },
   {
     name: 'Maria Prado Singh',
     image: 'https://cdn.quasar.dev/img/avatar2.jpg',
     opinion:
-      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus animi nemo possimus quasi, ullam molestiae eum ea eos omnis?',
+      'Embrace the cosmic vibe at Nebula Store, your go-to destination for urban chic and cutting-edge fashion. My online order from arrived promptly,',
     score: 5,
   },
   {
     name: 'Martin Ochoa',
     image: 'https://cdn.quasar.dev/img/avatar4.jpg',
     opinion:
-      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus animi nemo possimus quasi, ullam molestiae eum ea eos omnis?',
+      'Discover blissful fashion at Nebula Store, where ethereal dresses and eclectic accessories create a dreamy bohemian escape.',
     score: 4,
   },
   {
     name: 'Daniela Borras',
     image: 'https://cdn.quasar.dev/img/avatar3.jpg',
     opinion:
-      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus animi nemo possimus quasi, ullam molestiae eum ea eos omnis?',
+      'Nebula Store is a game-changer for activewear enthusiasts like me! The stylish yet functional activewear exceeded my expectations',
     score: 3,
   },
 ];
@@ -297,7 +302,7 @@ onMounted(() => {
 .home__hero {
   max-width: 1200px;
   border-radius: 10px;
-  background-image: url(https://assets-global.website-files.com/654c5f578cae1dae48ca94a1/654f1b0f5b5fc501c7d8f0be_hero-image.jpg);
+  background-image: url(../assets/home-background.webp);
   background-position: 0 0;
   background-size: auto;
   padding: 100px 80px;

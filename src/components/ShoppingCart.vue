@@ -23,6 +23,7 @@
               <q-img
                 :src="getProduct(product.productId)?.image"
                 :ratio="16 / 9"
+                loading="lazy"
                 spinner-color="dark"
                 spinner-size="30px"
                 fit="contain"

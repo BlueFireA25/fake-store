@@ -13,6 +13,7 @@
       >
         <q-img
           :src="product.image"
+          loading="lazy"
           :ratio="16 / 9"
           spinner-color="primary"
           spinner-size="82px"

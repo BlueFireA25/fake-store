@@ -22,6 +22,7 @@
       <q-img
         v-if="heroCard.image"
         :src="heroCard.image"
+        loading="eager"
         alt="Hero Image"
         :ratio="16 / 9"
         spinner-color="dark"

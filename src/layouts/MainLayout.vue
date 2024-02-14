@@ -2,17 +2,19 @@
   <q-layout view="lhh lpr lff">
     <q-header class="row justify-center bg-white q-py-lg q-px-md">
       <q-toolbar class="justify-between items-center toolbar q-px-none">
-        <q-img
-          src="../assets/nebula-logo.svg"
-          alt="Logo"
-          :ratio="16 / 9"
-          spinner-color="primary"
-          spinner-size="82px"
-          fit="contain"
-          width="150px"
-          height="50px"
-        />
-
+        <router-link :to="{ name: 'Home' }">
+          <q-img
+            src="../assets/nebula-logo.svg"
+            alt="Logo"
+            loading="eager"
+            :ratio="16 / 9"
+            spinner-color="primary"
+            spinner-size="25px"
+            fit="contain"
+            width="150px"
+            height="50px"
+          />
+        </router-link>
         <div class="row text-uppercase" v-if="$q.screen.gt.sm">
           <EssentialLink :essential-links="essentialLinksHeader" />
         </div>
@@ -44,6 +46,7 @@
                     <q-img
                       src="https://cdn.quasar.dev/img/avatar4.jpg"
                       alt="User"
+                      loading="lazy"
                       spinner-color="dark"
                       spinner-size="50px"
                     />
@@ -134,17 +137,19 @@
         <div
           class="row justify-between items-center full-width q-pt-lg q-px-lg q-pb-xl"
         >
-          <q-img
-            src="../assets/nebula-logo.svg"
-            alt="Logo"
-            :ratio="16 / 9"
-            spinner-color="primary"
-            spinner-size="82px"
-            fit="contain"
-            width="150px"
-            height="50px"
-          />
-
+          <router-link :to="{ name: 'Home' }">
+            <q-img
+              src="../assets/nebula-logo.svg"
+              alt="Logo"
+              loading="eager"
+              :ratio="16 / 9"
+              spinner-color="primary"
+              spinner-size="82px"
+              fit="contain"
+              width="150px"
+              height="50px"
+            />
+          </router-link>
           <q-btn
             class="bg-black full-height"
             color="white"
@@ -181,6 +186,7 @@
                   <q-img
                     src="https://cdn.quasar.dev/img/avatar4.jpg"
                     alt="User"
+                    loading="lazy"
                     spinner-color="dark"
                     spinner-size="50px"
                   />
@@ -236,17 +242,20 @@
 
     <footer class="footer bg-white text-dark">
       <q-toolbar class="column q-pa-none">
-        <q-img
-          src="../assets/nebula-logo.svg"
-          alt="Logo"
-          :ratio="16 / 9"
-          class="q-mb-lg"
-          spinner-color="primary"
-          spinner-size="82px"
-          fit="contain"
-          :width="$q.screen.gt.sm ? '228px' : '162px'"
-          :height="$q.screen.gt.sm ? '70px' : '50px'"
-        />
+        <router-link :to="{ name: 'Home' }">
+          <q-img
+            src="../assets/nebula-logo.svg"
+            alt="Logo"
+            loading="lazy"
+            :ratio="16 / 9"
+            class="q-mb-lg"
+            spinner-color="primary"
+            spinner-size="82px"
+            fit="contain"
+            :width="$q.screen.gt.sm ? '228px' : '162px'"
+            :height="$q.screen.gt.sm ? '70px' : '50px'"
+          />
+        </router-link>
         <p class="text-body2 text-weight-regular text-center q-mb-lg">
           But I must explain to you how all this mistaken idea of denouncing
           pleasure and <br />
@@ -258,9 +267,13 @@
         </div>
 
         <p class="text-body2 text-weight-medium text-center">
-          Designed by
-          <a href="https://webestica.com/" target="_blank">Webestica</a>,
-          Powered by <a href="https://webflow.com/" target="_blank">Webflow</a>
+          Made with 💪🏻 by
+          <a
+            class="footer__link--portfolio"
+            href="https://sebastianibaguecastro.netlify.app"
+            target="_blank"
+            >Sebastián Ibagué Castro</a
+          >.
         </p>
       </q-toolbar>
     </footer>
@@ -299,11 +312,11 @@ import { useRouter } from 'vue-router';
 import { useQuasar } from 'quasar';
 import { EssentialLinkProps } from 'src/components/models/general';
 import { loggedUser } from 'src/components/models/user';
-import EssentialLink from 'src/components/EssentialLink.vue';
-import ShoppingCart from 'src/components/ShoppingCart.vue';
 import { productStore } from 'src/stores/products';
 import { cartStore } from 'src/stores/cart';
 import { userStore } from 'src/stores/user';
+import EssentialLink from 'src/components/EssentialLink.vue';
+import ShoppingCart from 'src/components/ShoppingCart.vue';
 
 const $q = useQuasar();
 const router = useRouter();
@@ -439,6 +452,10 @@ onMounted(() => {
   padding: 80px 30px 40px 30px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.footer__link--portfolio {
+  text-decoration: underline;
 }
 
 @media (max-width: $breakpoint-md-max) {

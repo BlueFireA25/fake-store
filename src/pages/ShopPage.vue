@@ -50,7 +50,7 @@ import ProductList from 'src/components/ProductList.vue';
 const heroCard: HeroCardProps = {
   title: 'Shop',
   description:
-    "All graphical assets in this template are licensed for personal and commercial use. If you'd like to use a specific asset, please check the license below.",
+    'Explore our online store for a seamless shopping experience. Browse curated collections, enjoy exclusive deals, and easily place orders for trendy fashion at your fingertips.',
 };
 
 const productStoreInstance = productStore();
